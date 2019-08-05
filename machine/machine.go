@@ -2,6 +2,7 @@ package machine
 
 import (
 	"errors"
+
 	"github.com/offchainlabs/arb-util/protocol"
 	"github.com/offchainlabs/arb-util/value"
 )
@@ -45,7 +46,7 @@ type Machine interface {
 	Clone() Machine
 
 	InboxHash() value.HashOnlyValue
-	HasPendingMessages() bool
+	PendingMessageCount() uint64
 	SendOnchainMessage(protocol.Message)
 	DeliverOnchainMessage()
 	SendOffchainMessages([]protocol.Message)
