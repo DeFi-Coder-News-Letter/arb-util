@@ -35,6 +35,7 @@ type Result interface {
 	IsResult()
 
 	GetEthMsg() EthMsg
+	GetLogs() []Log
 }
 
 type Return struct {
@@ -45,6 +46,10 @@ type Return struct {
 
 func (e Return) GetEthMsg() EthMsg {
 	return e.Msg
+}
+
+func (e Return) GetLogs() []Log {
+	return e.Logs
 }
 
 func (e Return) IsResult() {}
@@ -75,6 +80,10 @@ func (e Revert) GetEthMsg() EthMsg {
 	return e.Msg
 }
 
+func (e Revert) GetLogs() []Log {
+	return nil
+}
+
 func (e Revert) IsResult() {}
 
 func (e Revert) String() string {
@@ -94,6 +103,10 @@ type Stop struct {
 
 func (e Stop) GetEthMsg() EthMsg {
 	return e.Msg
+}
+
+func (e Stop) GetLogs() []Log {
+	return e.Logs
 }
 
 func (e Stop) IsResult() {}
